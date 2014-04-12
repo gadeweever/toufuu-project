@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class Asteroid : Enemy {
@@ -36,13 +36,16 @@ public class Asteroid : Enemy {
 	}
 	*/
 	
+	public void makeFree() {
+		mycost=0;
+	}
+	
 	// Use this for initialization
 	void Start () {
-		//init path
-		mypath.pathInit(this.transform.position);
-		
-		//start attack
-		attackR=true;
+		mypath = this.GetComponent<Pather>();
+		myhealth = 1;
+		myspeed = .5f;
+		mycost = 10;
 	}
 	
 	// Update is called once per frame
@@ -51,7 +54,7 @@ public class Asteroid : Enemy {
 		if (myhealth<=0){Destroy(this);}
 		
 		//get and move in new dir
-		mypath.getDir(this.transform.position, myspeed);
+		this.transform.position+=Vector3.Scale(mypath.getDir(this.transform.position, myspeed),new Vector3(myspeed,myspeed,0));
 	
 		//check cooldown
 		//coolCheck();
