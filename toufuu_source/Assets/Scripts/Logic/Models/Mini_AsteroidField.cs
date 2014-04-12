@@ -16,6 +16,8 @@ public class Mini_AsteroidField : MiniBoss {
 		nan.points = new Vector3[] {Vector3.Scale(Vector3.down,new Vector3(6,6,6))};
 		nan.pathInit(na.transform.position);
 		na.gameObject.GetComponent<Asteroid>().makeFree();
+        attack1R = false;
+        attack1L = Time.timeSinceLevelLoad;
 	}
 	//spawns from bottom right going up left
 	new public void attack2() {
@@ -24,6 +26,8 @@ public class Mini_AsteroidField : MiniBoss {
 		nan.points = new Vector3[] {Vector3.Scale(new Vector3(6,6,6),new Vector3(-1,1,0))};
 		nan.pathInit(na.transform.position);
 		na.gameObject.GetComponent<Asteroid>().makeFree();
+        attack2R = false;
+        attack2L = Time.timeSinceLevelLoad;
 	}
 	
 	//spawns from bottom left going up right
@@ -33,6 +37,8 @@ public class Mini_AsteroidField : MiniBoss {
 		nan.points = new Vector3[] {Vector3.Scale(new Vector3(6,6,6),new Vector3(1,1,0))};
 		nan.pathInit(na.transform.position);
 		na.gameObject.GetComponent<Asteroid>().makeFree();
+        attack3R = false;
+        attack3L = Time.timeSinceLevelLoad;
 	}
 	
 	public void Start() {
