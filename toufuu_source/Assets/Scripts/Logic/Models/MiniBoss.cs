@@ -38,7 +38,6 @@ public class MiniBoss : MonoBehaviour {
 		if (Time.timeSinceLevelLoad - attack2L >=attack2C) {attack2R = true;}
         if (Time.timeSinceLevelLoad - attack3L >= attack3C) { attack3R = true; }
 
-        return true;
 	}
 	
 	// Use this for initialization
