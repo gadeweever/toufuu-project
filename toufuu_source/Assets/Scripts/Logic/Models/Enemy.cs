@@ -39,19 +39,18 @@ public class Enemy : MonoBehaviour {
 		//start attack
 		attackR=true;
 	}
-	
+
+    //check if i am dead
+    public void checkDead() { if (myhealth <= 0) { suicide(); } }
+
+    //follow path
+    public void pathMove(Vector3 me, float speed) { this.transform.position += Vector3.Scale(mypath.getDir(me, speed), new Vector3(speed, speed, 0)); }
+
 	// Update is called once per frame
 	void Update () {
-		//check if i am dead
-		if (myhealth<=0){suicide();}
-		
-		//get and move in new dir
-		mypath.getDir(this.transform.position, myspeed);
-	
-		//check cooldown
+        checkDead();
+        pathMove(this.transform.position, myspeed);
 		coolCheck();
-		
-		//attack when ready
 		if (attackR){attack();}
 	}
 
