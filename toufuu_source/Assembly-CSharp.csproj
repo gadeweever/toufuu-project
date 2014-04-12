@@ -51,6 +51,7 @@
     <Compile Include="Assets\Scripts\Logic\Models\Drive.cs" />
     <Compile Include="Assets\Scripts\Logic\Models\Enemy.cs" />
     <Compile Include="Assets\Scripts\Logic\Models\EnergyBar.cs" />
+    <Compile Include="Assets\Scripts\Logic\Models\FowardShooter.cs" />
     <Compile Include="Assets\Scripts\Logic\Models\GameState.cs" />
     <Compile Include="Assets\Scripts\Logic\Models\MiniBoss.cs" />
     <Compile Include="Assets\Scripts\Logic\Models\Mini_AsteroidField.cs" />
