@@ -33,7 +33,7 @@ public class MiniBoss : MonoBehaviour {
 	#endregion
 	
 	//check cooldowns
-	public bool coolCheck() {
+	public void coolCheck() {
 		if (Time.timeSinceLevelLoad - attack1L >=attack1C) {attack1R = true;}
 		if (Time.timeSinceLevelLoad - attack2L >=attack2C) {attack2R = true;}
 		if (Time.timeSinceLevelLoad - attack3L >=attack3C) {attack3R = true;}
