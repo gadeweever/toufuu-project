@@ -5,7 +5,7 @@ public class FowardShooter : Enemy
 {
     new public void attack()
     {
-        Transform nb = Object.Instantiate(E_Bullet, this.transform.position, Quaternion.identity) as Transform;
+        Transform nb = Object.Instantiate(E_Bullet, this.transform.position, Quaternion.identity) as Transform; 
         nb.gameObject.GetComponent<Pather>().points = mypath.points;
         nb.gameObject.GetComponent<Pather>().pathInit(nb.position);
     }
