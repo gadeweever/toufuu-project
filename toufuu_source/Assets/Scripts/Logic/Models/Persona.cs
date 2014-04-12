@@ -23,7 +23,7 @@ public class Persona : MonoBehaviour {
 	//list of specific enemy units
 	public Enemy[] special_units;
 	
-	//list of specific mini bosses;
+	//list of specificInstanced mini bosses;
 	public MiniBoss[] special_mini_boss;
 	
 	//array of available units;

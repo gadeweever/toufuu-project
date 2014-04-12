@@ -85,8 +85,7 @@ public class Player : MonoBehaviour {
 		{
 			Transform bulletInstance;
 			bulletInstance = Instantiate(bullet,shootPosition.position, shootPosition.rotation) as Transform;
-			Vector3 positionNew = bulletInstance.position + Vector3.up * 10f;
-			bulletInstance.transform.position = Vector3.Lerp(bulletInstance.transform.position, positionNew, 0.5f * Time.deltaTime);
+			
 		}
 			
 	}

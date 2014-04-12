@@ -6,7 +6,7 @@ public class MiniBoss : MonoBehaviour {
 	
 	#region Variables
 	//health of the mini
-	public float myhealth;
+	public float health;
 	
 	//the three attack timers and their bools:L = last C = cooldown R = ready
 	public float attack1L; 
@@ -36,7 +36,9 @@ public class MiniBoss : MonoBehaviour {
 	public bool coolCheck() {
 		if (Time.timeSinceLevelLoad - attack1L >=attack1C) {attack1R = true;}
 		if (Time.timeSinceLevelLoad - attack2L >=attack2C) {attack2R = true;}
-		if (Time.timeSinceLevelLoad - attack3L >=attack3C) {attack3R = true;}
+        if (Time.timeSinceLevelLoad - attack3L >= attack3C) { attack3R = true; }
+
+        return true;
 	}
 	
 	// Use this for initialization
