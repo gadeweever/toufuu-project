@@ -1,6 +1,13 @@
-﻿<Properties>
+﻿<Properties GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Logic\Models\MiniBoss.cs">
+    <Files>
+      <File FileName="Assets\Scripts\Logic\Models\Persona.cs" Line="26" Column="33" />
+      <File FileName="Assets\Scripts\Logic\Models\Player.cs" Line="80" Column="3" />
+      <File FileName="Assets\Scripts\Logic\Models\GameState.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Logic\Models\MiniBoss.cs" Line="37" Column="19" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
