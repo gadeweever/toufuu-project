@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class Enemy : MonoBehaviour {
@@ -13,6 +13,9 @@ public class Enemy : MonoBehaviour {
 	//speed
 	public float myspeed;
 	
+	//cost
+	public float mycost;
+
 	//attack vars: R=ready L=last C=cooldown
 	public bool attackR;
 	public float attackL;
@@ -29,6 +32,7 @@ public class Enemy : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
+		mypath = GetComponent<Pather>();
 		//init path
 		mypath.pathInit(this.transform.position);
 		
