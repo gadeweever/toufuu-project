@@ -37,10 +37,10 @@
     <Reference Include="System.XML" />
 	<Reference Include="System.Core" />
 	<Reference Include="UnityEngine">
-	  <HintPath>F:/Editor/Data/PlaybackEngines/CafePlayer/Tools/UnityEngine.dll</HintPath>
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/PlaybackEngines/CafePlayer/Tools/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
-	  <HintPath>F:/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>
@@ -51,7 +51,7 @@
      <Compile Include="Assets\Scripts\Logic\Models\EHomingBullet.cs" />
      <Compile Include="Assets\Scripts\Logic\Models\Enemy.cs" />
      <Compile Include="Assets\Scripts\Logic\Models\EnergyBar.cs" />
-     <Compile Include="Assets\Scripts\Logic\Models\FowardShooter.cs" />
+     <Compile Include="Assets\Scripts\Logic\Models\ForwardShooter.cs" />
      <Compile Include="Assets\Scripts\Logic\Models\GameState.cs" />
      <Compile Include="Assets\Scripts\Logic\Models\MiniBoss.cs" />
      <Compile Include="Assets\Scripts\Logic\Models\Mini_AsteroidField.cs" />
