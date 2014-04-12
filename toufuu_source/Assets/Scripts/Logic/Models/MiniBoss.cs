@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class MiniBoss : MonoBehavior {
+public class MiniBoss : MonoBehaviour {
 	//this is the class for a generic mini boss and all of its functions/vars
 	
 	#region Variables
@@ -19,7 +19,7 @@ public class MiniBoss : MonoBehavior {
 	public int attack3_s;
 	
 	//the movement path of the mini
-	public Path mypath;
+	//public Path mypath;
 	#endregion
 	
 	#region Functions
