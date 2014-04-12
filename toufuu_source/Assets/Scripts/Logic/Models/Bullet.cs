@@ -26,7 +26,6 @@ public class Bullet : MonoBehaviour
         Move();
     }
 
-
     void Move()
     {
         Vector3 positionNew = transform.position + Vector3.up * 10f;

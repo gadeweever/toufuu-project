@@ -49,6 +49,7 @@
     <Compile Include="Assets\Scripts\Logic\Models\Asteroid.cs" />
     <Compile Include="Assets\Scripts\Logic\Models\Bullet.cs" />
     <Compile Include="Assets\Scripts\Logic\Models\Drive.cs" />
+    <Compile Include="Assets\Scripts\Logic\Models\EHomingBullet.cs" />
     <Compile Include="Assets\Scripts\Logic\Models\Enemy.cs" />
     <Compile Include="Assets\Scripts\Logic\Models\EnergyBar.cs" />
     <Compile Include="Assets\Scripts\Logic\Models\FowardShooter.cs" />
