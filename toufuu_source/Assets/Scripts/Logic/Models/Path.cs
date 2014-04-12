@@ -31,7 +31,7 @@ public class Pather : MonoBehaviour {
 			// display tool tip
 			
 			//get input
-			if (Input.GetMouseButtonUp(0)) {
+			if (Input.GetMouseButtonDown(0)) {
 				points[0]=Input.mousePosition;
 				stage++;
 			}
