@@ -1,17 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Enemy : MonoBehaviour
+public class WorldWall : MonoBehaviour
 {
     void onCollisionEnter(Collision other)
     {
-        switch (other.gameObject.GetType().ToString())
+        switch (other.gameObject.tag)
         {
-            case "Player": 
+            case "player": 
                 break;
-            case "Enemy": other.gameObject.GetComponent<Enemy>().suicide();
+            case "enemy": other.gameObject.GetComponent<Enemy>().suicide();
                 break;
-            case "Bullet": Destroy(other.gameObject);
+            case "bullet": Destroy(other.gameObject);
                 break;
         }
     }

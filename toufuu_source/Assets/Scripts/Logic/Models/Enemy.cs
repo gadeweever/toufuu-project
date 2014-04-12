@@ -56,7 +56,7 @@ public class Enemy : MonoBehaviour {
 	}
 
     //last commands before destroying
-    void suicide()
+    public void suicide()
     {
         Destroy(this);
     }

@@ -7,6 +7,16 @@ public class Bullet : MonoBehaviour {
     public float speed;
     //public Path path;
 
+    void onCollisionEnter(Collision other)
+    {
+        switch (other.gameObject.tag)
+        {
+            case "enemy": other.gameObject.GetComponent<Enemy>().suicide();
+                break;
+        }
+        Destroy(this);
+    }
+
     void Update()
     {
         Move();
