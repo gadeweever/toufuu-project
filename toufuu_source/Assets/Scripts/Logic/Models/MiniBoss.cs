@@ -6,7 +6,13 @@ public class MiniBoss : MonoBehaviour {
 	
 	#region Variables
 	//health of the mini
-	public float health;
+	public float myhealth;
+	
+	//speed
+	public float myspeed;
+	
+	//cost
+	public float mycost;
 	
 	//the three attack timers and their bools:L = last C = cooldown R = ready
 	public float attack1L; 
@@ -53,7 +59,7 @@ public class MiniBoss : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		//check if i am dead
-		if (health <= 0){Destroy(this);}
+		if (myhealth <= 0){Destroy(this);}
 		
 		//update attack bools
 		coolCheck();
