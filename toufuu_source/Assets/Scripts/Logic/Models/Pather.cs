@@ -5,13 +5,9 @@ public class Pather : MonoBehaviour {
 
 	//array of points make all z's zero
 	public Vector3[] points;
-	
-	/*void Start() {
-		points = new Vector3[9];
-	}*/
-	
-	public Vector3 last = Vector3.zero;
-	
+
+    public Vector3 last;
+
 	//counter amongst the array
 	public int pos;
 	
@@ -22,7 +18,8 @@ public class Pather : MonoBehaviour {
 //	
 	//takes the callers position and speed
 	public Vector3 getDir(Vector3 me, float speed) {
-		if (pos!=points.Length && Vector3.Distance(me,points[pos]) >= speed) {
+        if (pos == 0) { last = points[pos] - me; }
+        else if (pos!=points.Length && Vector3.Distance(me,points[pos]) >= speed) {
 			last=points[pos]-me;
 			pos++;
 		}
