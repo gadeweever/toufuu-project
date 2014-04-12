@@ -196,6 +196,21 @@ public class Pather : MonoBehaviour {
 			}
 		}
 	}
+	
+	//free form path creator
+	public void makeFree() {
+		
+		int counter=0;
+		int i = 0;
+		while (Input.GetMouseButton(0)) {
+			counter++;
+			if (counter>=30) {
+				points[i]=Input.mousePosition;
+				counter=0;
+				i++;
+			}
+		}
+	}
 	#endregion
 	
 	#region Premade Paths
