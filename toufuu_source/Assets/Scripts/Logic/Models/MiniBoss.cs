@@ -4,9 +4,12 @@ using System.Collections;
 public class MiniBoss : MonoBehaviour {
 	//this is the class for a generic mini boss and all of its functions/vars
 	
-	#region Variables
-	//health of the mini
-	public float health;
+	#region Variables 
+	//health of the mini 
+	public float myhealth; 
+
+    public float myspeed;
+    public int mycost;
 	
 	//the three attack timers and their bools:L = last C = cooldown R = ready
 	public float attack1L; 
@@ -53,7 +56,7 @@ public class MiniBoss : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		//check if i am dead
-		if (health <= 0){Destroy(this);}
+		if (myhealth <= 0){Destroy(this);}
 		
 		//update attack bools
 		coolCheck();

@@ -43,6 +43,9 @@ public class Asteroid : Enemy {
 		
 		//start attack
 		attackR=true;
+
+        myhealth = 5;
+        myspeed = 5;
 	}
 	
 	// Update is called once per frame
