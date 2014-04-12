@@ -16,9 +16,6 @@ public class Enemy : MonoBehaviour {
     //cost
     public int mycost;
 	
-	//cost
-	public float mycost;
-
 	//attack vars: R=ready L=last C=cooldown
 	public bool attackR;
 	public float attackL;

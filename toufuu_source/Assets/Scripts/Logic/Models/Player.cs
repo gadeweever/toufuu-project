@@ -2,8 +2,11 @@
 using System.Collections;
 
 public class Player : MonoBehaviour {
-	
-	
+
+    //wiimote this player is using
+    public WiiURemote myRemote;
+    //number of player (1-4)
+    public uint playerNum;
 	// lives: one hit one kill. Set this < 1
 	public int lives;
 	// speed constant multiplied or added to move the player
@@ -45,9 +48,12 @@ public class Player : MonoBehaviour {
 	
 	public Transform MoveUpDown()
 	{
-		Vector3 positionnow = transform.position;
-		if(Input.GetKey(KeyCode.UpArrow))
-		{	
+
+        myRemote = WiiUInput.GetRemote(playerNum);
+        Vector3 positionnow = transform.position;
+
+        if (myRemote.GetButton(WiiUButton.ButtonUp))  //up on the d-pad
+		{
 			transform.position = Vector3.Lerp(transform.position, new Vector3(positionnow.x,positionnow.y+1,positionnow.z), speed * Time.deltaTime);
 		}
 		else if (Input.GetKey(KeyCode.DownArrow))
@@ -84,12 +90,56 @@ public class Player : MonoBehaviour {
 		if(Input.GetKey(KeyCode.A))
 		{
 			Transform bulletInstance;
+			bulletInstance = Instantiate(bullet,shootPosition.position, shootPosition.rotation) as Transform;		
+		}
+			
+	}
+    //mouse controls below
+    /*
+    if (Input.GetKey(KeyCode.UpArrow))  //up on the d-pad
+	{
+		transform.position = Vector3.Lerp(transform.position, new Vector3(positionnow.x,positionnow.y+1,positionnow.z), speed * Time.deltaTime);
+	}
+	else if (Input.GetKey(KeyCode.DownArrow))
+	{
+		transform.position = Vector3.Lerp(transform.position, new Vector3(positionnow.x,positionnow.y-1,positionnow.z), speed * Time.deltaTime);
+	}
+	return this.transform;
+			
+	}
+	public Transform MoveLeftRight()
+	{
+		Vector3 positionnow = transform.position;
+		if(Input.GetKey(KeyCode.LeftArrow))
+		{	
+			transform.position = Vector3.Lerp(transform.position, new Vector3(positionnow.x-1,positionnow.y,positionnow.z), speed * Time.deltaTime);
+		}
+		else if (Input.GetKey(KeyCode.RightArrow))
+		{
+			transform.position = Vector3.Lerp(transform.position, new Vector3(positionnow.x+1,positionnow.y,positionnow.z), speed * Time.deltaTime);
+		}
+		return this.transform;
+	}
+	
+	public void SwtichWeapon()
+	{
+		if(currentWeapon == weaponOne)
+			currentWeapon = weaponTwo;
+		else
+			currentWeapon = weaponOne;
+	}
+	
+	public void Shoot()
+	{
+		if(Input.GetKey(KeyCode.A))
+		{
+			Transform bulletInstance;
 			bulletInstance = Instantiate(bullet,shootPosition.position, shootPosition.rotation) as Transform;
 			
 		}
 			
 	}
-			
+    */
 		
 	
 }
