@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class FowardShooter : Enemy
+public class ForwardShooter : Enemy
 {
+    public Transform bullet;
     new public void attack()
     {
-        Transform nb = Object.Instantiate(E_Bullet, this.transform.position, Quaternion.identity) as Transform;
+        Transform nb = Object.Instantiate(bullet, this.transform.position, Quaternion.identity) as Transform;
         nb.gameObject.GetComponent<Pather>().points = mypath.points;
         nb.gameObject.GetComponent<Pather>().pathInit(nb.position);
     }
