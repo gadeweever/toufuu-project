@@ -1,15 +1,41 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Weapon : MonoBehaviour {
+public class Weapon : MonoBehaviour
+{
 
-	// Use this for initialization
+    #region Variables
+    float attackC, attackL;
+    bool attackR;
+    #endregion
+
+    #region functions
+    //attack
+    void attack()
+    {
+        if (attackR)
+        {
+            //commenceattack
+            attackL = Time.timeSinceLevelLoad;
+            attackR = false;
+        }
+    }
+    //cooldown checker
+    void coolCheck()
+    {
+        if (Time.timeSinceLevelLoad - attackL >= attackC) { attackR = true; }
+    }
+
+    // Use this for initialization
 	void Start () {
-	
+        attackR = true;
+        attackL = Time.timeSinceLevelLoad;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
+    //update
+    void Update()
+    {
+        coolCheck();
+    }
+    #endregion
 }
