@@ -19,6 +19,18 @@ public class Persona : MonoBehaviour {
 	
 	//list of enemies currently on the field
 	public Enemy[] currents;
+	
+	//list of specific enemy units
+	public Enemy[] special_units;
+	
+	//list of specific mini bosses;
+	public MiniBoss[] special_mini_boss;
+	
+	//array of available units;
+	public Enemy[] units;
+	
+	//array of available mini bosses
+	public MiniBoss[] miniBosses;
 	#endregion
 	
 	#region Extra Class Variables
@@ -27,6 +39,8 @@ public class Persona : MonoBehaviour {
 	private float timeConstant;
 	#endregion
 	
+	public void ability1(){}
+	public void ability2(){}
 	
 	public void TimeDeplete()
 	{
