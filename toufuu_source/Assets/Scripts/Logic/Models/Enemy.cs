@@ -13,14 +13,19 @@ public class Enemy : MonoBehaviour {
 	//speed
 	public float myspeed;
 	
-	//attack vars: R=ready L=last
+	//attack vars: R=ready L=last C=cooldown
 	public bool attackR;
 	public float attackL;
+	public float attackC;
 	#endregion
 	
 	#region Functions
 	//function to handle attacking
 	public void attack(){}
+	
+	public void coolCheck() {
+		if(Time.timeSinceLevelLoad - attackL >= attackC) {attackR=true;}
+	}
 	
 	// Use this for initialization
 	void Start () {
@@ -38,6 +43,9 @@ public class Enemy : MonoBehaviour {
 		
 		//get and move in new dir
 		mypath.getDir(this.transform.position, myspeed);
+	
+		//check cooldown
+		coolCheck();
 		
 		//attack when ready
 		if (attackR){attack();}

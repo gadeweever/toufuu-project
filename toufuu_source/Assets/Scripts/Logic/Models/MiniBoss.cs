@@ -6,14 +6,15 @@ public class MiniBoss : MonoBehaviour {
 	
 	#region Variables
 	//health of the mini
-	public float health;
+	public float myhealth;
 	
-	//the three attack timers and their bools
-	//attackxL is the time at last use of the ability
-	//attackxR is the bool for being ready
+	//the three attack timers and their bools:L = last C = cooldown R = ready
 	public float attack1L; 
 	public float attack2L;
 	public float attack3L;
+	public float attack1C; 
+	public float attack2C;
+	public float attack3C;
 	public bool attack1R;
 	public bool attack2R;
 	public bool attack3R;
@@ -32,10 +33,10 @@ public class MiniBoss : MonoBehaviour {
 	#endregion
 	
 	//check cooldowns
-	public void coolCheck() {
-		if (Time.timeSinceLevelLoad - attack1L <=0) {attack1R = true;}
-		if (Time.timeSinceLevelLoad - attack2L <=0) {attack2R = true;}
-		if (Time.timeSinceLevelLoad - attack3L <=0) {attack3R = true;}
+	public bool coolCheck() {
+		if (Time.timeSinceLevelLoad - attack1L >=attack1C) {attack1R = true;}
+		if (Time.timeSinceLevelLoad - attack2L >=attack2C) {attack2R = true;}
+		if (Time.timeSinceLevelLoad - attack3L >=attack3C) {attack3R = true;}
 	}
 	
 	// Use this for initialization
