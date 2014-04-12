@@ -3,7 +3,7 @@ using System.Collections;
 
 public class FowardShooter : Enemy
 {
-    public void attack()
+    new public void attack()
     {
         Transform nb = Object.Instantiate(E_Bullet, this.transform.position, Quaternion.identity) as Transform;
         nb.gameObject.GetComponent<Pather>().points = mypath.points;
