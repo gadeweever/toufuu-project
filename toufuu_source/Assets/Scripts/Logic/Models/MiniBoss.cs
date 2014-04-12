@@ -11,9 +11,9 @@ public class MiniBoss : MonoBehaviour {
 	//the three attack timers and their bools
 	//attackxL is the time at last use of the ability
 	//attackxR is the bool for being ready
-	public Time attack1L; 
-	public Time attack2L;
-	public Time attack3L;
+	public float attack1L; 
+	public float attack2L;
+	public float attack3L;
 	public bool attack1R;
 	public bool attack2R;
 	public bool attack3R;
@@ -44,8 +44,8 @@ public class MiniBoss : MonoBehaviour {
 		attack1R = true;
 		attack2R = attack3R = false;
 		//set distonance between attacks
-		attack2L = Time.timeSinceLevelLoad+3.0;
-		attack3L = Time.timeSinceLevelLoad+7.0;
+		attack2L = Time.timeSinceLevelLoad+3.0f;
+		attack3L = Time.timeSinceLevelLoad+7.0f;
 	}
 	
 	// Update is called once per frame
