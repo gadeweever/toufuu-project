@@ -4,12 +4,15 @@ using System.Collections;
 public class MiniBoss : MonoBehaviour {
 	//this is the class for a generic mini boss and all of its functions/vars
 	
-	#region Variables 
-	//health of the mini 
-	public float myhealth; 
-
-    public float myspeed;
-    public int mycost;
+	#region Variables
+	//health of the mini
+	public float myhealth;
+	
+	//speed
+	public float myspeed;
+	
+	//cost
+	public float mycost;
 	
 	//the three attack timers and their bools:L = last C = cooldown R = ready
 	public float attack1L; 
