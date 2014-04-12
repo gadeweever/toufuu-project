@@ -42,6 +42,37 @@ public class Persona : MonoBehaviour {
 	public void ability1(){}
 	public void ability2(){}
 	
+	private int counter;
+	private int pos;
+	public bool makingPath;
+	public Pather lastPath;
+	
+	public void Start() {
+		counter=0;
+		pos=0;
+	}
+	
+	public void Update() {
+		#region freeform path creation
+		if (Input.GetMouseButtonDown(0)&&makingPath) {
+			lastPath.points=lastPath.P_Zero;
+		}
+		if (Input.GetMouseButton(0)&&makingPath) {
+			counter++;
+			if (counter>=30) {
+				lastPath.points[pos]=Input.mousePosition;
+				counter=0;
+				pos++;
+			}
+		}
+		if (Input.GetMouseButtonUp(0)&&makingPath) {
+			counter=0;
+			pos=0;
+			makingPath=false;
+		}
+		#endregion
+	}
+
 	public void TimeDeplete()
 	{
 	}
