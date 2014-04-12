@@ -43,7 +43,7 @@ public class Enemy : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		//check if i am dead
-		if (myhealth<=0){Destroy(this);}
+		if (myhealth<=0){suicide();}
 		
 		//get and move in new dir
 		mypath.getDir(this.transform.position, myspeed);
@@ -54,5 +54,11 @@ public class Enemy : MonoBehaviour {
 		//attack when ready
 		if (attackR){attack();}
 	}
+
+    //last commands before destroying
+    void suicide()
+    {
+        Destroy(this);
+    }
 	#endregion
 }
