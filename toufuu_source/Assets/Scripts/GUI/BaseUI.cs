@@ -6,7 +6,7 @@ public class BaseUI : MonoBehaviour
 
     public GameState gamestate;
     public Persona persona;
-    private int selections;
+    public int selections;
     private string[] selectionNames;
     // Use this for initialization
     void Start()
@@ -26,6 +26,13 @@ public class BaseUI : MonoBehaviour
         DrawPlayers();
         DrawBar();
         DrawEnemySelect();
+        Debug.Log(selections);
+        if (selections >= 0 && selections < 10 && Input.GetMouseButtonUp(0))
+        {
+
+            persona.selectedItem = selections;
+            
+        }
     }
 
 
@@ -66,6 +73,8 @@ public class BaseUI : MonoBehaviour
     void DrawEnemySelect()
     {
         selections = GUI.SelectionGrid(new Rect(0, 0, 200, Screen.height), selections, selectionNames, 2);
+
+
     }
 
     #endregion
@@ -87,7 +96,7 @@ public class BaseUI : MonoBehaviour
 
     private string[] SetSelections()
     {
-        string[] ns = { "gooby", "pls", "wow", "very cool", "such awesome", "interest", "BARK", "Woof!", "Dandellion", "Kop" };
+        string[] ns = { persona.asteroid.ToString(), "pls", "wow", "very cool", "such awesome", "interest", "BARK", "Woof!", "Dandellion", "Kop" };
         return ns;
     }
     #endregion

@@ -18,7 +18,7 @@ public class Pather : MonoBehaviour {
 //	
 	//takes the callers position and speed
 	public Vector3 getDir(Vector3 me, float speed) {
-        if (pos!=points.Length && Vector3.Distance(me,points[pos]) >= speed) {
+        if (pos<points.Length && Vector3.Distance(me,points[pos]) >= speed) {
 			last=points[pos]-me;
 			pos++;
 		}
