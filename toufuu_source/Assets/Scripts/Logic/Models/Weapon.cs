@@ -10,7 +10,7 @@ public class Weapon : MonoBehaviour
     #endregion
 
     #region functions
-    //attack
+    //attack\
     void attack()
     {
         if (attackR)

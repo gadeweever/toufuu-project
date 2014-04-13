@@ -9,7 +9,9 @@ public class GameState : MonoBehaviour
     // variable comparison against timeSinceLevelLoad. it is in seconds
     public float totalTime;
     //wave number displays the current wave number
-    public int waveNumber; 
+    public int waveNumber;
+    public GameObject p1;
+    public GameObject p2;
 
     // Use this for initialization
     void Start()
@@ -17,6 +19,8 @@ public class GameState : MonoBehaviour
         isTime = true;
         totalTime = 250.0f;
         waveNumber = 0;
+        p1 = GameObject.FindGameObjectWithTag("P1");
+        p2 = GameObject.FindGameObjectWithTag("P2");
     }
 
     // Update is called once per frame

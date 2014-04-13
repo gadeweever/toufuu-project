@@ -4,7 +4,7 @@ using System.Collections;
 public class ForwardShooter : Enemy
 {
     public Transform bullet;
-    new public void attack()
+    public void attack()
     {
         Transform nb = Object.Instantiate(bullet, this.transform.position, Quaternion.identity) as Transform;
         nb.gameObject.GetComponent<Pather>().points = mypath.points;
@@ -20,5 +20,11 @@ public class ForwardShooter : Enemy
         attackC = 1;
         attackL = Time.timeSinceLevelLoad;
         attackR = true;
+    }
+
+    void Update()
+    {
+        //if (coolCheck())
+            attack();
     }
 }

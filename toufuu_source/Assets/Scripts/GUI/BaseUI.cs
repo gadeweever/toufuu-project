@@ -54,9 +54,14 @@ public class BaseUI : MonoBehaviour
     {
         GUI.Box(new Rect(0, Screen.height - 35, Screen.width, 40), "");
         GUI.Box(new Rect(Screen.width * .80f - 50, Screen.height - 30, 100, 30), new GUIContent("Player4", "Health"));
+        
         GUI.Box(new Rect(Screen.width * .60f - 50, Screen.height - 30, 100, 30), new GUIContent("Player3", "Health"));
         GUI.Box(new Rect(Screen.width * .40f - 50, Screen.height - 30, 100, 30), new GUIContent("Player2", "Health"));
+        if (gamestate.p2.GetComponent<Player>().respawnTimer > 0)
+            GUI.Box(new Rect(Screen.width * .40f - 50, Screen.height - 60, 100, 30), gamestate.p2.GetComponent<Player>().respawnTimer.ToString());
         GUI.Box(new Rect(Screen.width * .20f - 50, Screen.height - 30, 100, 30), new GUIContent("Player1", "Health"));
+        if (gamestate.p1.GetComponent<Player>().respawnTimer > 0)
+            GUI.Box(new Rect(Screen.width * .20f - 50, Screen.height - 60, 100, 30), gamestate.p1.GetComponent<Player>().respawnTimer.ToString());
     }
 
     void DrawBar()
@@ -72,7 +77,7 @@ public class BaseUI : MonoBehaviour
 
     void DrawEnemySelect()
     {
-        selections = GUI.SelectionGrid(new Rect(0, 0, 200, Screen.height), selections, selectionNames, 2);
+        selections = GUI.SelectionGrid(new Rect(0, 0, 250, Screen.height-50), selections, selectionNames, 2);
 
 
     }

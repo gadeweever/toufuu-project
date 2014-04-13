@@ -52,7 +52,6 @@ public class Persona : MonoBehaviour
     public void ability2() { }
 
     private int counter;
-    private int pos;
     public bool makingPath;
     public Pather lastPath;
 
