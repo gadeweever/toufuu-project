@@ -22,6 +22,21 @@ public class Pather : MonoBehaviour
         points = temp;
     }
 
+    //function to add wall for first part of a path, to be called after pathInit
+    public Vector3 spawnAtWall()
+    {
+        if (points.Length > 1)
+        {
+            Vector3[] tempr = new Vector3[points.Length + 1];
+            tempr[0] = traceToWall(points[0], points[1]);
+            for (int i = 0; i < points.Length; i++)
+                tempr[i+1] = points[i];
+            points = tempr;
+        }
+
+        return points[0];
+    }
+
     //function to find the nearest wall
     public Vector3[] toTheWindows(Vector3 me, Vector3[] pp)
     {
@@ -36,6 +51,32 @@ public class Pather : MonoBehaviour
         for (int i = 0; i < pp.Length; i++) { temp[i + 1] = pp[i]; }
         temp[0] = r;
         return temp;
+    }
+
+    //function to trace straight paths back to wall
+    public Vector3 traceToWall(Vector3 start, Vector3 end)
+    {
+        //left x=0; right x= 400
+        //bottom y=0; top y = 200
+        bool found = false;
+        Vector3 wpos = start;
+        int escape = 0;
+        while (!found)
+        {
+            if (escape > 800)
+            {
+                Debug.Log("forced to escape");
+                return (new Vector3(200, 200, 0));
+            }
+            if (wpos.x < 0 || wpos.x > 400 || wpos.y < 0 || wpos.y > 200)
+                found = true;
+            else
+            {
+                escape++;
+                wpos = wpos + (start - end).normalized;
+            }
+        }
+        return wpos;
     }
 
 

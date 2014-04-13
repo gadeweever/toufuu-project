@@ -83,14 +83,13 @@ public class Persona : MonoBehaviour
         {
             try
             {
-                //if (Input.touches[0].phase == TouchPhase.Began && makingPath)
-                if (Input.GetMouseButtonDown(0) && makingPath)
+                if (Input.touches[0].phase == TouchPhase.Began && makingPath)
+                //if (Input.GetMouseButtonDown(0) && makingPath)
                 {
                     lastPath.points = new Vector3[0];
-                    //Debug.Log("Mouse Loc:" + Input.mousePosition);
                 }
-                if (Input.GetMouseButton(0) && makingPath)
-                //if (Input.touches[0].phase == TouchPhase.Moved && makingPath)
+                //if (Input.GetMouseButton(0) && makingPath)
+                if (Input.touches[0].phase == TouchPhase.Moved && makingPath)
                 {
                     counter++;
                     if (counter >= 10)
@@ -101,24 +100,22 @@ public class Persona : MonoBehaviour
                             temp[i] = lastPath.points[i];
                         }
                         temp[lastPath.points.Length] = Input.mousePosition;
-                        //Debug.Log(temp[lastPath.points.Length]);
                         //temp[lastPath.points.Length] = Input.touches[0].position;
                         counter = 0;
                         lastPath.points = temp;
                     }
                 }
-                if (Input.GetMouseButtonUp(0) && makingPath)
-                //if (Input.touches[0].phase == TouchPhase.Ended && makingPath)
+                //if (Input.GetMouseButtonUp(0) && makingPath)
+                if (Input.touches[0].phase == TouchPhase.Ended && makingPath)
                 {
                     counter = 10;
                     makingPath = false;
                     selectedItem = 10;
                     guiVals.selections = 10;
-                    //Debug.Log("We drew a path");
                     Spawn(asteroid, lastPath);
                     lastPath.points = new Vector3[0];
                 }
-                /*
+                
                 if (Input.touches[0].phase == TouchPhase.Canceled && makingPath)
                 {
                     counter = 30;
@@ -127,7 +124,7 @@ public class Persona : MonoBehaviour
                     guiVals.selections = 10;
                     lastPath.points = new Vector3[0];
                 }
-                 */
+                 
             }
             catch(IndexOutOfRangeException)
             { 
@@ -145,21 +142,13 @@ public class Persona : MonoBehaviour
         //Debug.Log(Screen.width);//1366
         //Debug.Log(Screen.height);//598
         Vector3 scale = new Vector3((400f / Screen.width) * start.points[0].x, (180f / Screen.height) * start.points[0].y, 0);
-        //Debug.Log(scale);
         enemy = UnityEngine.Object.Instantiate(enemy, scale, Quaternion.identity) as Transform;
         enemy.gameObject.GetComponent<Pather>().points = lastPath.points;
-        //Debug.Log(enemy.position);
         enemy.gameObject.GetComponent<Pather>().makeLine();
         enemy.gameObject.GetComponent<Pather>().pathInit(enemy.position);
-        //Debug.Log(enemy.gameObject.GetComponent<Pather>().points[0]);
-        //enemy.gameObject.GetComponent<Pather>().points = lastPath.toTheWindows(start.points[0], start.points);
-        //enemy.position = enemy.gameObject.GetComponent<Pather>().points[0];
-        //Debug.Log("my points in order:");
-        for (int i = 0; i < enemy.gameObject.GetComponent<Pather>().points.Length; i++) {
-            Debug.Log(enemy.gameObject.GetComponent<Pather>().points[i]); }
+        enemy.position = enemy.gameObject.GetComponent<Pather>().spawnAtWall();
 
         energy.current -= myasteroid.mycost * 3;
-        
     }
 
     public void TimeDeplete()
