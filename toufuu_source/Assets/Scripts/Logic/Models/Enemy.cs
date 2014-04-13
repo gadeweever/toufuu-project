@@ -35,7 +35,7 @@ public class Enemy : MonoBehaviour {
 		mypath = GetComponent<Pather>();
 		//init path
 		mypath.pathInit(this.transform.position);
-		
+        mypath.spawnAtWall();
 		//start attack
 		attackR=true;
 	}
