@@ -6,6 +6,7 @@ public class Pather : MonoBehaviour
 
     //array of points make all z's zero
     public Vector3[] points;
+    public Vector3[] temp;
 
     public Vector3 last;
 
@@ -37,24 +38,19 @@ public class Pather : MonoBehaviour
         return temp;
     }
 
-    //takes the callers position and speed
-    public Vector3 getDir(Vector3 me, float speed)
-    {
-        if (pos < points.Length && Vector3.Distance(me, points[pos]) >= speed)
-        {
-            last = points[pos] - me;
-            pos++;
-        }
-        return last.normalized;
-    }
 
     #region Path Maker Functions
     //line path creator
     public void makeLine()
     {
-        Vector3 temp = points[points.Length - 1] - points[0];
-        points = P_Zero;
-        points[0] = temp.normalized;
+        temp = new Vector3[3];
+        temp[0]=points[0];
+        temp[1] = points[points.Length - 1];
+        temp[2] = (temp[1] - temp[0]) * 1000f;
+        points = new Vector3[3];
+        points[0] = temp[0];
+        points[1] = temp[1];
+        points[2] = temp[2];
     }
 
     //arc path creator

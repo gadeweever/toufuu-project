@@ -2,6 +2,9 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Logic\Models\ForwardShooter.cs">
     <Files>
+      <File FileName="Assets\Scripts\Logic\Models\Enemy.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Logic\Models\Persona.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Logic\Models\Pather.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Logic\Models\FowardHomerEnemy.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Logic\Models\ForwardShooter.cs" Line="1" Column="1" />
     </Files>

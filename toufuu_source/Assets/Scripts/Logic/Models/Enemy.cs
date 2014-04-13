@@ -44,7 +44,11 @@ public class Enemy : MonoBehaviour {
     public void checkDead() { if (myhealth <= 0) { suicide(); } }
 
     //follow path
-    public void pathMove(Vector3 me, float speed) { this.transform.position += Vector3.Scale(mypath.getDir(me, speed), new Vector3(speed, speed, 0)); }
+    public void pathMove(Vector3 me, float speed)
+    {
+        if (mypath.pos < mypath.points.Length) { this.transform.position = Vector3.MoveTowards(me, (mypath.points[mypath.pos]), myspeed); }
+        if (mypath.pos < mypath.points.Length && Vector3.Distance(me, mypath.points[mypath.pos]) < .2f) { mypath.pos++; }
+    }
 
 	// Update is called once per frame
 	void Update () {
