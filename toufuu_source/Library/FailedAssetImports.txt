@@ -1,3 +1,0 @@
-Assets/Prefabs/Asteroid/E_Asteroid.prefab
-Assets/Prefabs/Bullet/E_Bullet.prefab
-Assets/Prefabs/E_Bullet/E_Bullet.prefab
