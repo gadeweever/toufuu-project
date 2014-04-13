@@ -17,7 +17,7 @@ public class BaseUI : MonoBehaviour
         selectionNames = new string[selections];
         selectionNames = SetSelections();
     }
-
+    [GuiTarget(GuiTarget.Target.GamePad)]
     void OnGUI()
     {
         DrawTime();
@@ -26,7 +26,7 @@ public class BaseUI : MonoBehaviour
         DrawPlayers();
         DrawBar();
         DrawEnemySelect();
-        Debug.Log(selections);
+        //Debug.Log(selections);
         if (selections >= 0 && selections < 10 && Input.GetMouseButtonUp(0))
         {
 
