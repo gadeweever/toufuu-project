@@ -3,9 +3,11 @@ using System.Collections;
 
 public class FowardHomerEnemy : Enemy
 {
+
+    public Transform homing;
     new public void attack()
     {
-        Transform nb = Object.Instantiate(E_HomingBullet, this.transform.position, Quaternion.identity) as Transform;
+        Transform nb = Object.Instantiate(homing, this.transform.position, Quaternion.identity) as Transform;
         GameObject[] plays = GameObject.FindGameObjectsWithTag("player");
         nb.gameObject.GetComponent<EHomingBullet>().target = plays[(Random.Range(0, plays.Length - 1))].transform;
     }
