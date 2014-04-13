@@ -131,6 +131,10 @@ public class Persona : MonoBehaviour
         enemy = Object.Instantiate(enemy, start.points[0], Quaternion.identity) as Transform;
         enemy.gameObject.GetComponent<Pather>().points = lastPath.points;
         enemy.gameObject.GetComponent<Pather>().makeLine();
+        enemy.gameObject.GetComponent<Pather>().points = lastPath.toTheWindows(start.points[0], start.points);
+        enemy.position = enemy.gameObject.GetComponent<Pather>.points[0];
+        debug.log("my points in order:");
+        for (int i = 0; i < enemy.gameObject.GetComponent<Pather>.points.Length; i++) { debug.log(enemy.gameObject.GetComponent<Pather>.points[i]); }
     }
 
     public void TimeDeplete()
