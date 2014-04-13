@@ -77,13 +77,15 @@ public class Persona : MonoBehaviour
             makingPath = true;
         }
         else
-        { 
-            if (Input.GetMouseButtonDown(0) && makingPath)
+        {
+            if (Input.touches[0].phase == TouchPhase.Began && makingPath)
+            //if (Input.GetMouseButtonDown(0) && makingPath)
             {
                 lastPath.points = new Vector3[0];
                 Debug.Log("Mouse Loc:" + Input.mousePosition);
             }
-            if (Input.GetMouseButton(0) && makingPath)
+            //if (Input.GetMouseButton(0) && makingPath)
+            if (Input.touches[0].phase == TouchPhase.Moved && makingPath)
             {
                 counter++;
                 if (counter >= 30)
@@ -93,12 +95,14 @@ public class Persona : MonoBehaviour
                     {
                         temp[i] = lastPath.points[i];
                     }
-                    temp[lastPath.points.Length] = Input.mousePosition;
+                    //temp[lastPath.points.Length] = Input.mousePosition;
+                    temp[lastPath.points.Length] = Input.touches[0].position;
                     counter = 0;
                     lastPath.points = temp;
                 }
             }
-            if (Input.GetMouseButtonUp(0) && makingPath)
+            //if (Input.GetMouseButtonUp(0) && makingPath)
+            if (Input.touches[0].phase == TouchPhase.Ended && makingPath)
             {
                 counter = 30;
                 makingPath = false;
@@ -107,6 +111,14 @@ public class Persona : MonoBehaviour
 
                 Debug.Log("We drew a path");
                 Spawn(asteroid, lastPath);
+            }
+
+            if (Input.touches[0].phase == TouchPhase.Canceled && makingPath)
+            {
+                counter = 30;
+                makingPath = false;
+                selectedItem = 10;
+                guiVals.selections = 10;
             }
         }
     }
