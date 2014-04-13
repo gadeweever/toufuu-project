@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour
     #region Variables
     public Transform body;
     public float speed;
-    public float dmg;
+    public float damage;
     public Pather path;
     #endregion 
 
@@ -15,7 +15,7 @@ public class Bullet : MonoBehaviour
     {
         switch (other.gameObject.tag)
         {
-            case "enemy": other.gameObject.GetComponent<Enemy>().myhealth-=dmg;
+            case "enemy": other.gameObject.GetComponent<Enemy>().myhealth-=damage;
                 break;
         }
         Destroy(this);
@@ -24,11 +24,20 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         Move();
+
     }
 
     void Move()
     {
-        Vector3 positionNew = transform.position + Vector3.up * 10f;
+        Vector3 positionNew = transform.position + Vector3.up * 2f;
         transform.position = Vector3.Lerp(transform.position, positionNew, speed * Time.deltaTime);
+        Destroy(gameObject, 5f);
     }
+
+    void Start()
+    {
+        damage = 50;
+    }
+
+    
 }

@@ -25,6 +25,8 @@ public class Player : MonoBehaviour {
 	public int score;
 	//input for instantiaing array of fixed size
 	public int WeaponNumber;
+
+    public float respawnTimer;
 	
 	public Transform shootPosition;
 	public Transform bullet;
@@ -39,6 +41,15 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if(respawnTimer > 0f)
+        {
+            respawnTimer -= Time.deltaTime;
+        }
+        if(respawnTimer < 0f)
+        {
+            transform.position = new Vector3(150, 100, 0);
+            //respawnTimer = 0f;
+        }
 		MoveUpDown();
 		MoveLeftRight();
 		Shoot();
@@ -82,7 +93,7 @@ public class Player : MonoBehaviour {
 		{
 			Rigidbody bulletInstance;
 			bulletInstance = Instantiate(bullet,shootPosition.position, shootPosition.rotation) as Rigidbody;
-            bulletInstance.AddForce(Vector3.forward * 200f, ForceMode.Impulse);
+            //bulletInstance.Adde(Vector3.forward, ForceMode.Force);
 		    
 		}
         if (myRemote.GetButton(WiiUButton.Button1)) //2=A=weapon 2
@@ -95,9 +106,15 @@ public class Player : MonoBehaviour {
     void OnCollisionEnter(Collision collision)
     {
         Debug.Log("WOW COLISION");
-        if(collision.gameObject.tag == "Asteroid")
-            Destroy(gameObject);
+        if (collision.gameObject.tag == "Asteroid")
+        {
+            //Destroy(gameObject);
+            transform.position = new Vector3(0, 0, 0);
+            respawnTimer += 5;
+        }
+        
     }
+
     //old keyboard controls below
     /*
     if (Input.GetKey(KeyCode.UpArrow))  //up on the d-pad

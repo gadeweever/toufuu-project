@@ -25,7 +25,7 @@ public class EnergyBar : MonoBehaviour
     void Replenish()
     {
         if (current < max)
-            current += (int)(rate * Time.deltaTime);
+            current += (int)(rate * Time.deltaTime*.5f);
     }
 
     void Kill()
