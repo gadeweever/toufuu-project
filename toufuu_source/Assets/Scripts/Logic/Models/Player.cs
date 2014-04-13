@@ -6,7 +6,7 @@ public class Player : MonoBehaviour {
     //wiimote this player is using
     public WiiURemote myRemote;
     //number of player (1-4)
-    public uint playerNum;
+    public int playerNum;
 	// lives: one hit one kill. Set this < 1
 	public int lives;
 	// speed constant multiplied or added to move the player
@@ -14,7 +14,6 @@ public class Player : MonoBehaviour {
 	// Weapon to hold weapon
 	public Weapon weaponOne;
 	public Weapon weaponTwo;
-	public Weapon currentWeapon;
 	// power determins how much damage they do
 	public float power;
 	// Class for specifying the drive associated with the player
@@ -35,8 +34,7 @@ public class Player : MonoBehaviour {
 		isInvincible = false;
 		isShadowed = false;
 		drive = GetComponent<Drive>();
-		power = 0;
-		currentWeapon = weaponOne;
+        power = 0;
 	}
 	
 	// Update is called once per frame
@@ -49,14 +47,14 @@ public class Player : MonoBehaviour {
 	public Transform MoveUpDown()
 	{
 
-        myRemote = WiiUInput.GetRemote(playerNum);
+        myRemote = WiiUInput.GetRemote((uint)playerNum);
         Vector3 positionnow = transform.position;
 
-        if (myRemote.GetButton(WiiUButton.ButtonUp))  //up on the d-pad
+        if (myRemote.GetButton(WiiUButton.ButtonRight))//up on flipped d-pad
 		{
 			transform.position = Vector3.Lerp(transform.position, new Vector3(positionnow.x,positionnow.y+1,positionnow.z), speed * Time.deltaTime);
 		}
-		else if (Input.GetKey(KeyCode.DownArrow))
+        else if (myRemote.GetButton(WiiUButton.ButtonLeft))//down on flipped d-pad
 		{
 			transform.position = Vector3.Lerp(transform.position, new Vector3(positionnow.x,positionnow.y-1,positionnow.z), speed * Time.deltaTime);
 		}
@@ -66,35 +64,31 @@ public class Player : MonoBehaviour {
 	public Transform MoveLeftRight()
 	{
 		Vector3 positionnow = transform.position;
-		if(Input.GetKey(KeyCode.LeftArrow))
+        if (myRemote.GetButton(WiiUButton.ButtonUp))//left on flipped d-pad
 		{	
 			transform.position = Vector3.Lerp(transform.position, new Vector3(positionnow.x-1,positionnow.y,positionnow.z), speed * Time.deltaTime);
 		}
-		else if (Input.GetKey(KeyCode.RightArrow))
+        else if (myRemote.GetButton(WiiUButton.ButtonDown))
 		{
 			transform.position = Vector3.Lerp(transform.position, new Vector3(positionnow.x+1,positionnow.y,positionnow.z), speed * Time.deltaTime);
 		}
 		return this.transform;
 	}
 	
-	public void SwtichWeapon()
-	{
-		if(currentWeapon == weaponOne)
-			currentWeapon = weaponTwo;
-		else
-			currentWeapon = weaponOne;
-	}
-	
 	public void Shoot()
 	{
-		if(Input.GetKey(KeyCode.A))
+        if (myRemote.GetButton(WiiUButton.Button2)) //2=A=weapon 1
 		{
-			Transform bulletInstance;
-			bulletInstance = Instantiate(bullet,shootPosition.position, shootPosition.rotation) as Transform;		
+			//Transform bulletInstance;
+			//bulletInstance = Instantiate(bullet,shootPosition.position, shootPosition.rotation) as Transform;		
 		}
+        if (myRemote.GetButton(WiiUButton.Button1)) //2=A=weapon 2
+        {
+
+        }
 			
 	}
-    //mouse controls below
+    //old keyboard controls below
     /*
     if (Input.GetKey(KeyCode.UpArrow))  //up on the d-pad
 	{

@@ -37,10 +37,10 @@
     <Reference Include="System.XML" />
 	<Reference Include="System.Core" />
 	<Reference Include="UnityEngine">
-	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/PlaybackEngines/CafePlayer/Tools/UnityEngine.dll</HintPath>
+	  <HintPath>F:/Editor/Data/PlaybackEngines/CafePlayer/Tools/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
-	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	  <HintPath>F:/Editor/Data/Managed/UnityEditor.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>
@@ -48,15 +48,19 @@
      <Compile Include="Assets\Scripts\Logic\Models\Asteroid.cs" />
      <Compile Include="Assets\Scripts\Logic\Models\Bullet.cs" />
      <Compile Include="Assets\Scripts\Logic\Models\Drive.cs" />
+     <Compile Include="Assets\Scripts\Logic\Models\EHomingBullet.cs" />
      <Compile Include="Assets\Scripts\Logic\Models\Enemy.cs" />
      <Compile Include="Assets\Scripts\Logic\Models\EnergyBar.cs" />
+     <Compile Include="Assets\Scripts\Logic\Models\ForwardShooter.cs" />
      <Compile Include="Assets\Scripts\Logic\Models\GameState.cs" />
      <Compile Include="Assets\Scripts\Logic\Models\MiniBoss.cs" />
      <Compile Include="Assets\Scripts\Logic\Models\Mini_AsteroidField.cs" />
      <Compile Include="Assets\Scripts\Logic\Models\Pather.cs" />
      <Compile Include="Assets\Scripts\Logic\Models\Persona.cs" />
      <Compile Include="Assets\Scripts\Logic\Models\Player.cs" />
+     <Compile Include="Assets\Scripts\Logic\Models\SuicideRush.cs" />
      <Compile Include="Assets\Scripts\Logic\Models\Weapon.cs" />
+     <Compile Include="Assets\Scripts\Logic\Models\WorldWall.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
