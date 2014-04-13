@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System;
 
 public class Asteroid : Enemy {
 	//function to try to set my cost to 0;
@@ -18,6 +19,13 @@ public class Asteroid : Enemy {
 	// Update is called once per frame
 	void Update () {
         checkDead();
-        pathMove(this.transform.position,myspeed);
+        try
+        {
+            pathMove(this.transform.position, myspeed);
+        }
+        catch(NullReferenceException)
+        { 
+            return;
+        }
 	}
 }

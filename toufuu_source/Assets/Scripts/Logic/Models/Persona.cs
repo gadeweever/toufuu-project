@@ -12,14 +12,19 @@ public class Persona : MonoBehaviour
     // this should be depleted using a time function, or with the available other functions
     public EnergyBar energy;
 
+
+    public BaseUI guiVals;
     // currentEnemyCount: enemies currently instantiated
     public int currentEnemyCount;
 
     // maxQueue: max number of queueable minions to instantiate
     public int maxQueue;
 
+    public int selectedItem;
+
     //list of enemies currently on the field
-    public Enemy[] currents;
+    public Transform asteroid;
+
 
     //energy bars to represent energy
 
@@ -52,35 +57,68 @@ public class Persona : MonoBehaviour
 
     public void Start()
     {
-        counter = 0;
+        makingPath = false;
+        selectedItem = 10;
+        counter = 30;
         pos = 0;
         energy = GetComponent<EnergyBar>();
+        guiVals = GetComponent<BaseUI>();
+        lastPath = GetComponent<Pather>();
+        GetComponent<Asteroid>().myspeed = 0f;
+
+
     }
 
     public void Update()
     {
         #region freeform path creation
-        if (Input.GetMouseButtonDown(0) && makingPath)
+        if ((selectedItem >= 0 && selectedItem < 10) && !makingPath)
         {
-            lastPath.points = lastPath.P_Zero;
+            makingPath = true;
         }
-        if (Input.GetMouseButton(0) && makingPath)
-        {
-            counter++;
-            if (counter >= 30)
+        else
+        { 
+            if (Input.GetMouseButtonDown(0) && makingPath)
             {
-                lastPath.points[pos] = Input.mousePosition;
-                counter = 0;
-                pos++;
+                lastPath.points = new Vector3[0];
+                Debug.Log("Mouse Loc:" + Input.mousePosition);
+            }
+            if (Input.GetMouseButton(0) && makingPath)
+            {
+                counter++;
+                if (counter >= 30)
+                {
+                    Vector3[] temp = new Vector3[lastPath.points.Length + 1];
+                    for (int i = 0; i < lastPath.points.Length; i++)    
+                    {
+                        temp[i] = lastPath.points[i];
+                    }
+                    temp[lastPath.points.Length] = Input.mousePosition;
+                    counter = 0;
+                    lastPath.points = temp;
+                }
+            }
+            if (Input.GetMouseButtonUp(0) && makingPath)
+            {
+                counter = 30;
+                makingPath = false;
+                selectedItem = 10;
+                guiVals.selections = 10;
+
+                Debug.Log("We drew a path");
+                Spawn(asteroid, lastPath);
             }
         }
-        if (Input.GetMouseButtonUp(0) && makingPath)
-        {
-            counter = 0;
-            pos = 0;
-            makingPath = false;
-        }
+    }
+
         #endregion
+
+
+    public void Spawn(Transform enemy, Pather start)
+    {
+        enemy = Object.Instantiate(enemy, start.points[0], Quaternion.identity) as Transform;
+        enemy.gameObject.GetComponent<Pather>().points = lastPath.points;
+        enemy.gameObject.GetComponent<Pather>().makeLine();
     }
 
     public void TimeDeplete()
