@@ -61,7 +61,7 @@ public class Enemy : MonoBehaviour {
     //last commands before destroying
     public void suicide()
     {
-        Destroy(this);
+        Destroy(gameObject);
     }
 	#endregion
 }

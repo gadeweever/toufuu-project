@@ -23,6 +23,7 @@ public class Player : MonoBehaviour {
 	// determines if the player is physics incoherent
 	public bool isShadowed;
 	public int score;
+    public int cdshoot;
 	//input for instantiaing array of fixed size
 	public int WeaponNumber;
 
@@ -37,22 +38,31 @@ public class Player : MonoBehaviour {
 		isShadowed = false;
 		drive = GetComponent<Drive>();
         power = 0;
+        cdshoot = 0;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        if (cdshoot > 0)
+            cdshoot--;
         if(respawnTimer > 0f)
         {
             respawnTimer -= Time.deltaTime;
+        
         }
         if(respawnTimer < 0f)
         {
             transform.position = new Vector3(150, 100, 0);
             //respawnTimer = 0f;
+            cdshoot = 0;
         }
 		MoveUpDown();
 		MoveLeftRight();
-		Shoot();
+        if (cdshoot == 0)
+        {
+            Shoot();
+
+        }
 	}
 	
 	public Transform MoveUpDown()
@@ -88,6 +98,7 @@ public class Player : MonoBehaviour {
 	
 	public void Shoot()
 	{
+        cdshoot = 5;   
         if(Input.GetKeyDown(KeyCode.A))
         //if (myRemote.GetButton(WiiUButton.Button2)) //2=A=weapon 1
 		{

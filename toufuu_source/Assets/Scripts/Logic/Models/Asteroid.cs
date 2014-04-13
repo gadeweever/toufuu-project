@@ -36,4 +36,14 @@ public class Asteroid : Enemy {
         if (this.tag == "Asteroid")
             transform.Rotate(0, rotation * Time.deltaTime * .5f, 0);
     }
+
+    void OnCollisionEnter(Collision other)
+    {
+        Debug.Log(other.gameObject.tag);
+        if (other.gameObject.tag == "Lazer")
+        {
+            Destroy(other.gameObject);
+            this.myhealth -= 50;
+        }
+    }
 }

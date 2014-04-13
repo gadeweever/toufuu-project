@@ -11,15 +11,7 @@ public class Bullet : MonoBehaviour
     public Pather path;
     #endregion 
 
-    void onCollisionEnter(Collision other)
-    {
-        switch (other.gameObject.tag)
-        {
-            case "enemy": other.gameObject.GetComponent<Enemy>().myhealth-=damage;
-                break;
-        }
-        Destroy(this);
-    }
+ 
 
     void Update()
     {

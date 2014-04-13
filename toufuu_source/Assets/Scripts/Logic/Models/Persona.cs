@@ -59,8 +59,7 @@ public class Persona : MonoBehaviour
     {
         makingPath = false;
         selectedItem = 10;
-        counter = 10;
-        pos = 0;
+        counter = 10;   
         energy = GetComponent<EnergyBar>();
         guiVals = GetComponent<BaseUI>();
         lastPath = GetComponent<Pather>();
