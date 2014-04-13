@@ -155,8 +155,10 @@ public class Persona : MonoBehaviour
         //enemy.gameObject.GetComponent<Pather>().points = lastPath.toTheWindows(start.points[0], start.points);
         //enemy.position = enemy.gameObject.GetComponent<Pather>().points[0];
         //Debug.Log("my points in order:");
-        //for (int i = 0; i < enemy.gameObject.GetComponent<Pather>().points.Length; i++) {
-            //Debug.Log(enemy.gameObject.GetComponent<Pather>().points[i]); }
+        for (int i = 0; i < enemy.gameObject.GetComponent<Pather>().points.Length; i++) {
+            Debug.Log(enemy.gameObject.GetComponent<Pather>().points[i]); }
+
+        energy.current -= myasteroid.mycost * 3;
         
     }
 

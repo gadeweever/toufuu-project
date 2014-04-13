@@ -77,10 +77,13 @@ public class Player : MonoBehaviour {
 	
 	public void Shoot()
 	{
-        if (myRemote.GetButton(WiiUButton.Button2)) //2=A=weapon 1
+        if(Input.GetKeyDown(KeyCode.A))
+        //if (myRemote.GetButton(WiiUButton.Button2)) //2=A=weapon 1
 		{
-			//Transform bulletInstance;
-			//bulletInstance = Instantiate(bullet,shootPosition.position, shootPosition.rotation) as Transform;		
+			Rigidbody bulletInstance;
+			bulletInstance = Instantiate(bullet,shootPosition.position, shootPosition.rotation) as Rigidbody;
+            bulletInstance.AddForce(Vector3.forward * 200f, ForceMode.Impulse);
+		    
 		}
         if (myRemote.GetButton(WiiUButton.Button1)) //2=A=weapon 2
         {
@@ -88,6 +91,13 @@ public class Player : MonoBehaviour {
         }
 			
 	}
+
+    void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("WOW COLISION");
+        if(collision.gameObject.tag == "Asteroid")
+            Destroy(gameObject);
+    }
     //old keyboard controls below
     /*
     if (Input.GetKey(KeyCode.UpArrow))  //up on the d-pad

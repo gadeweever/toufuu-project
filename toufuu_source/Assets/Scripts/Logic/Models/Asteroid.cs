@@ -7,13 +7,14 @@ public class Asteroid : Enemy {
 	public void makeFree() {
 		mycost=0;
 	}
-	
+    private float rotation;
 	// Use this for initialization
 	void Start () {
 		mypath = this.GetComponent<Pather>();
 		myhealth = 500;
 		myspeed = .5f;
 		mycost = 10;
+        rotation = UnityEngine.Random.Range(20, 180);
 	}
 	
 	// Update is called once per frame
@@ -27,5 +28,12 @@ public class Asteroid : Enemy {
         { 
             return;
         }
+        SlowRotate();
 	}
+
+    void SlowRotate()
+    {
+        if (this.tag == "Asteroid")
+            transform.Rotate(0, rotation * Time.deltaTime * .5f, 0);
+    }
 }
