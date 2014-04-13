@@ -83,14 +83,14 @@ public class Persona : MonoBehaviour
         {
             try
             {
-                if (Input.touches[0].phase == TouchPhase.Began && makingPath)
-                //if (Input.GetMouseButtonDown(0) && makingPath)
+                //if (Input.touches[0].phase == TouchPhase.Began && makingPath)
+                if (Input.GetMouseButtonDown(0) && makingPath)
                 {
                     lastPath.points = new Vector3[0];
                     //Debug.Log("Mouse Loc:" + Input.mousePosition);
                 }
-                //if (Input.GetMouseButton(0) && makingPath)
-                if (Input.touches[0].phase == TouchPhase.Moved && makingPath)
+                if (Input.GetMouseButton(0) && makingPath)
+                //if (Input.touches[0].phase == TouchPhase.Moved && makingPath)
                 {
                     counter++;
                     if (counter >= 10)
@@ -107,8 +107,8 @@ public class Persona : MonoBehaviour
                         lastPath.points = temp;
                     }
                 }
-                //if (Input.GetMouseButtonUp(0) && makingPath)
-                if (Input.touches[0].phase == TouchPhase.Ended && makingPath)
+                if (Input.GetMouseButtonUp(0) && makingPath)
+                //if (Input.touches[0].phase == TouchPhase.Ended && makingPath)
                 {
                     counter = 10;
                     makingPath = false;
@@ -116,15 +116,18 @@ public class Persona : MonoBehaviour
                     guiVals.selections = 10;
                     //Debug.Log("We drew a path");
                     Spawn(asteroid, lastPath);
+                    lastPath.points = new Vector3[0];
                 }
-
+                /*
                 if (Input.touches[0].phase == TouchPhase.Canceled && makingPath)
                 {
                     counter = 30;
                     makingPath = false;
                     selectedItem = 10;
                     guiVals.selections = 10;
+                    lastPath.points = new Vector3[0];
                 }
+                 */
             }
             catch(IndexOutOfRangeException)
             { 
